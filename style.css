@@ -1,0 +1,562 @@
+/* Reset e Variáveis */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --verde-toxico: #39ff14;
+    --verde-escuro: #0a2f0a;
+    --rosa-tecnologico: #ff00ff;
+    --rosa-escuro: #4d004d;
+    --preto-apocaliptico: #0a0a0a;
+    --cinza-destruicao: #1a1a1a;
+    --cinza-metal: #333333;
+    --branco: #ffffff;
+    --amarelo-alerta: #ffff00;
+}
+
+body {
+    background-color: var(--preto-apocaliptico);
+    color: var(--branco);
+    overflow-x: hidden;
+    line-height: 1.6;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(57, 255, 20, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 20%);
+}
+
+/* Efeitos de Partículas */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Header e Navegação */
+header {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 2px solid var(--verde-toxico);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, var(--verde-toxico), var(--rosa-tecnologico));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.logo-icon {
+    color: var(--verde-toxico);
+    animation: pulse 2s infinite;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--branco);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--verde-toxico), var(--rosa-tecnologico));
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover:before,
+.nav-links a.active:before {
+    width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--verde-toxico);
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.7);
+}
+
+/* Conteúdo Principal */
+main {
+    padding-top: 80px;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--verde-toxico);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(57, 255, 20, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: shine 5s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, var(--verde-toxico), var(--rosa-tecnologico));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    position: relative;
+}
+
+.hero h1:after {
+    content: 'ALERTA: I.A. DETECTADA';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--rosa-tecnologico), var(--verde-toxico));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glitch 0.3s infinite;
+    opacity: 0.7;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #cccccc;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--verde-toxico), var(--rosa-tecnologico));
+    color: var(--preto-apocaliptico);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 0, 255, 0.6);
+    animation: glitch 0.5s;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Seções Gerais */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: linear-gradient(45deg, var(--verde-toxico), var(--rosa-tecnologico));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    position: relative;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+    color: var(--verde-toxico);
+    border-left: 4px solid var(--rosa-tecnologico);
+    padding-left: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #cccccc;
+}
+
+/* Grid de Personagens */
+.character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.character-card {
+    background: var(--cinza-destruicao);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.character-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--verde-toxico), var(--rosa-tecnologico));
+}
+
+.character-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--verde-toxico);
+    box-shadow: 0 10px 20px rgba(57, 255, 20, 0.2);
+}
+
+.character-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--verde-toxico), var(--rosa-tecnologico));
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--preto-apocaliptico);
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.character-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--verde-toxico);
+}
+
+.character-card .role {
+    color: var(--rosa-tecnologico);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Cartas de Inimigos */
+.enemy-card {
+    border-color: var(--rosa-tecnologico) !important;
+}
+
+.enemy-icon {
+    background: var(--rosa-tecnologico) !important;
+}
+
+.enemy-name {
+    color: var(--rosa-tecnologico) !important;
+}
+
+.enemy-role {
+    color: var(--verde-toxico) !important;
+}
+
+/* Lista de Recursos */
+.feature-list {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.feature-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--cinza-metal);
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.feature-list li:before {
+    content: "🐾";
+    color: var(--verde-toxico);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+/* Sistema de Combate */
+.combat-system {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.combat-card {
+    background: var(--cinza-destruicao);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--rosa-tecnologico);
+}
+
+.combat-card h3 {
+    color: var(--rosa-tecnologico);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Logs de Desenvolvimento */
+.dev-log {
+    background: var(--cinza-destruicao);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--verde-toxico);
+    position: relative;
+    overflow: hidden;
+}
+
+.dev-log:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.05), transparent);
+    transform: translateX(-100%);
+}
+
+.dev-log:hover:before {
+    animation: shine-over 1.5s;
+}
+
+@keyframes shine-over {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.dev-log h3 {
+    color: var(--verde-toxico);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.dev-log .date {
+    color: var(--rosa-tecnologico);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* Alertas de Perigo */
+.danger-alert {
+    background: linear-gradient(45deg, var(--rosa-tecnologico), var(--verde-toxico));
+    color: var(--preto-apocaliptico);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid var(--amarelo-alerta);
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+    animation: pulse 2s infinite;
+}
+
+/* Footer */
+footer {
+    background: var(--cinza-destruicao);
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    border-top: 2px solid var(--rosa-tecnologico);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.social-links a {
+    color: var(--branco);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--verde-toxico);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    color: #999;
+    margin-top: 1.5rem;
+}
+
+/* Efeitos de Destaque */
+.highlight {
+    color: var(--verde-toxico);
+    font-weight: bold;
+}
+
+.highlight-pink {
+    color: var(--rosa-tecnologico);
+    font-weight: bold;
+}
+
+.highlight-danger {
+    color: var(--amarelo-alerta);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .tab-content {
+        padding: 1rem;
+    }
+    
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .combat-system {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        gap: 0.5rem;
+    }
+    
+    .nav-links a {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero {
+        padding: 3rem 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+}
